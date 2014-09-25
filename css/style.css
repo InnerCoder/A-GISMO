@@ -1,0 +1,102 @@
+/* Put your CSS here */
+.ember-application {
+    margin: 0px;  
+}
+
+.sub-nav dd {
+  a:after {
+    content: " \25B4\25BE";
+  }
+
+  &.asc a:after {
+    content: " \25B4";
+  }
+
+  &.desc a:after {
+    content: " \25BE";
+  }
+}
+
+
+body {
+	background-image: url("/TerraMap/images/Road_Background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+span {
+	color: white;
+}
+
+span:active {
+	color: #d9534f;
+}
+
+.glyphicon2x {
+	font-size: 24px;
+}
+
+
+.glyphicon4x {
+	font-size: 48px;
+}
+
+.mapbtn {
+	height: 300px;
+	/*background-color: blue;*/
+	text-align: center;
+	padding:10px;
+}
+
+.mynav-button {
+	border-left-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	border-color: #d9534f;
+}
+
+.mynav-button:hover {
+background: repeating-linear-gradient(
+  45deg,
+  #d9534f,
+  #d9534f .25em,
+  rgba(0, 0, 0, 0) .25em,
+  rgba(0, 0, 0, 0) 1.5em
+);
+}
+
+.mynav-button:active {
+	background: repeating-linear-gradient(
+  45deg,
+  #d9534f,
+  #d9534f 2px,
+  rgba(0, 0, 0, 0) 2px,
+  rgba(0, 0, 0, 0) 20px
+);
+}
+
+.nvleft {
+	border-top-left-radius: 10px;
+	border-right-style: solid;
+	border-left-style: solid;
+}
+
+.nvright {
+	border-top-right-radius: 10px;
+	border-left-style: none;
+	border-right-style:solid;
+}
+.mybutton{
+	border-style: solid;
+	border-radius: 10px;
+	padding: 10px;
+}
+.red{
+	border-color: #d9534f;
+	color: #d9534f;
+}
+.grn{
+	border-color: #5cb85c;
+	color: #5cb85c;
+}
