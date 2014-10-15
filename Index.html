@@ -12,23 +12,10 @@
             {{render "userpanel" userpanel}}
             <div style="height:7em"></div>
             {{outlet}} 
-            <div style="height:11em;"></div>  
+            <div class="navbar-fixed-bottom" style="height:11em;"></div>  
             <div class="navbar navbar-fixed-bottom">{{nav-bar}}</div>    
   </script> 
 
-  <script type="text/x-handlebars" data-template-name="publiclist">
-    {{#each}}
-      {{#if public}}
-      <h5>
-        <div>
-          {{name}}, {{state}}
-            <div class="badge">Public Access</div>
-        </div>
-      </h5>
-      {{/if}}
-    {{/each}}
-
-  </script>
 
   <script type="text/x-handlebars" data-template-name="userpanel">
       {{#if isAuth}}
@@ -41,7 +28,7 @@
                         <div style="position:fixed; top:20px; bottom:20px; right:20px; left:20px; z-index:9999; background-color:rgba(255,255,255, .95); padding:10px; border-radius:10px;">
                             <div class="row">
                               <div class="col-xs-10">
-                                    <h2>{{model.firstname}}, <small>{{model.lastname}}</small></h2>
+                                    <h2>{{model.firstname}} {{model.lastname}}<small> - {{model.usetype}}</small></h2>
                                     <hr>
                               </div>
                               <div class="col-xs-2">
@@ -54,26 +41,48 @@
                                   <h4>
                                       <u>Your Available Towns</u>
                                   </h4>
-                                {{#each town in model.availabletowns}}
-                                  <h5>
-                                    <div>
-                                      {{town.town}}
-                                        <span class="label label-default">Paid For</span>
-                                    </div>
-                                  </h5>
-                                {{/each}}
-                                {{#with controllers.home}}
-                                  {{#each town in model}}
-                                    {{#if town.public}}
-                                        <h5>
-                                          <div>
-                                            {{town.name}}, {{town.state}}
-                                              <span class="label label-success">Public Access</span>
-                                          </div>
-                                        </h5>
-                                    {{/if}}
+                                {{#if allTown}}
+                                  {{#with controllers.home}}
+                                    {{#each town in model}}
+                                      {{#if town.public}}
+                                          <h5>
+                                            <div>
+                                              {{town.name}}, {{town.state}}
+                                                <span class="label label-success">Public Access</span>
+                                            </div>
+                                          </h5>
+                                      {{else}}
+                                          <h5>
+                                            <div>
+                                              {{town.name}}, {{town.state}}
+                                                <span class="label label-default">Paid For</span>
+                                            </div>
+                                          </h5>
+                                      {{/if}}
+                                    {{/each}}
+                                  {{/with}}
+                                {{else}}
+                                  {{#each town in model.availabletowns}}
+                                    <h5>
+                                      <div>
+                                        {{town.town}}
+                                          <span class="label label-default">Paid For</span>
+                                      </div>
+                                    </h5>
                                   {{/each}}
-                                {{/with}}
+                                  {{#with controllers.home}}
+                                    {{#each town in model}}
+                                      {{#if town.public}}
+                                          <h5>
+                                            <div>
+                                              {{town.name}}, {{town.state}}
+                                                <span class="label label-success">Public Access</span>
+                                            </div>
+                                          </h5>
+                                      {{/if}}
+                                    {{/each}}
+                                  {{/with}}
+                                {{/if}}
                               </div>
                             </div>                            
                             <div class="btn mybutton red btn-block" {{action 'LogOut'}}>Log Out</div>
@@ -150,11 +159,7 @@
               <hr>
               <p class="well">We are a division of Avitar Associates devoted to providing the very best mapping services to municipalities</p>
           </div>
-          <div class="row">
-              <div class="bs-callout bs-callout-info">
-                <h4>This is a new site and product, please give us your feedback at terramap@avitarassociates.com</h4>
-              </div>
-          </div>
+          
 
         </div>
   </script>
@@ -386,25 +391,25 @@
     <div class="container">
         <div class="row">
           {{#link-to 'home'}}
-            <div class="col-md-3 col-xs-3 btn mynav-button nvleft">
+            <div class="col-md-3 col-xs-3 btn mynav-button nvleft" style="background-color:rgba(0,0,0, .6);">
               <span class="glyphicon glyphicon4x glyphicon-home"></span>
                <h4 style="color: white; font-weight:bolder;">HOME</h4> 
             </div>
           {{/link-to}}
           {{#link-to 'maps'}}
-            <div class="col-md-3 col-xs-3 btn mynav-button">
+            <div class="col-md-3 col-xs-3 btn mynav-button" style="background-color:rgba(0,0,0, .6);">
               <span class="glyphicon glyphicon4x glyphicon-globe"></span>
                <h4 style="color: white; font-weight:bolder;">MAPS</h4> 
             </div>
           {{/link-to}}
           {{#link-to 'about'}}
-            <div class="col-md-3 col-xs-3 btn mynav-button">
+            <div class="col-md-3 col-xs-3 btn mynav-button" style="background-color:rgba(0,0,0, .6);">
               <span class="glyphicon glyphicon4x glyphicon-info-sign"></span>
                <h4 style="color: white; font-weight:bolder;">ABOUT</h4> 
             </div>
           {{/link-to}}
           {{#link-to 'future'}}
-            <div class="col-md-3 col-xs-3 btn mynav-button nvright">
+            <div class="col-md-3 col-xs-3 btn mynav-button nvright" style="background-color:rgba(0,0,0, .6);">
               <span class="glyphicon glyphicon4x glyphicon-flag"></span>
                <h4 style="color: white; font-weight:bolder;">FUTURE</h4> 
             </div>

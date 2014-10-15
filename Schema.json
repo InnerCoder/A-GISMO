@@ -1,0 +1,124 @@
+
+  {
+   "clients" : 
+     { 
+      "1" : 
+      {
+       "firstName" : "Phillip",
+       "lastName" : "Bell",
+       "addressStreet" : "24 Spruce Street",
+       "addressCity" : "Concord",
+       "addressState" : "New Hampshire",
+       "addressZip" : "03223",
+       "propertyPic" : "hbhjhb",
+       "dateAdded" : "01-01-01",
+       "visits" : [{
+              "id" : "1",
+             "crewLeader" : "Steve Smith",
+             "date" : "12-01-2013",
+             "timeStart" : "10:00am",
+             "timeEnd" : "11.55am",
+             "cost" : "$150",
+             "notes" : "rear window already had scratch"
+           },{
+              "id" : "1",
+             "crewLeader" : "Steve Smith",
+             "date" : "12-04-2014",
+             "timeStart" : "10:00am",
+             "timeEnd" : "11.55am",
+             "cost" : "$180",
+             "notes" : "rear window already had scratch"
+           }],
+       "schedule" : {
+          "id" : "1",
+           "crewLeader" : "Ryan Gosling",
+           "date" : "06-08-2014",
+           "time" : "8:00am",
+           "cost" : "$133",
+           "notes" : "owner is very tiddy"
+         }
+         ,
+         "houseinfo" : {
+          "id" : "1",
+          "style" : "Ranch",
+          "windowCount" : "11",
+          "windowType" : "Double Hung"
+         }
+     }
+     ,
+      "2" : 
+      {
+       "firstName" : "Kathy",
+       "lastName" : "Bell",
+       "addressStreet" : "24 Spruce Street",
+       "addressCity" : "Concord",
+       "addressState" : "New Hampshire",
+       "addressZip" : "03223",
+       "propertyPic" : "hbhjhb",
+       "visits" : [{
+            "id" : "2",
+             "crewLeader" : "Steve Smith",
+             "date" : "12-018-2014",
+             "timeStart" : "10:00am",
+             "timeEnd" : "11.55am",
+             "cost" : "$498",
+             "notes" : "rear window already had scratch"
+           },{
+            "id" : "2",
+             "crewLeader" : "Steve Smith",
+             "date" : "12-01-2011",
+             "timeStart" : "10:00am",
+             "timeEnd" : "11.55am",
+             "cost" : "$543",
+             "notes" : "rear window already had scratch"
+           }]
+       ,
+       "schedule" : {
+            "id" : "2",
+           "crewLeader" : "Ryan Gosling",
+           "date" : "06-08-2014",
+           "time" : "10:10am",
+           "cost" : "$486",
+           "notes" : "owner is very tiddy"
+         }
+         ,
+         "houseinfo" : {
+          "id" : "3",
+          "style" : "Contemporary",
+          "windowCount" : "24",
+          "windowType" : "Casement"
+         }
+     },
+     "3" : 
+      {
+       "firstName" : "Suzanne",
+       "lastName" : "Roberge",
+       "addressStreet" : "74 Charles Street",
+       "addressCity" : "Rochester",
+       "addressState" : "New Hampshire",
+       "addressZip" : "03867",
+       "propertyPic" : "hbhjhb",
+       "visits" : 
+          [{
+            
+           }]
+       ,
+       "schedule" : {
+          "id" : "3",
+           "crewLeader" : "Ryan Gosling",
+           "date" : "06-08-2014",
+           "time" : "12:30pm",
+           "cost" : "$238",
+           "notes" : "owner is very tiddy"
+         }
+         ,
+         "houseinfo" : {
+          "id" : "3",
+          "style" : "Colonial",
+          "windowCount" : "32",
+          "windowType" : "6 over 6"
+         }
+       
+     }
+    }
+  }

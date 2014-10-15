@@ -52,11 +52,12 @@ GISMO.User = Ember.Object.extend({
 
 
 GISMO.Router.map(function() {
-  this.resource('home', {path: '/'});
-  this.resource('userpanel', {path:'/params.user_id'});
+  this.resource('home', {path: ''}, function(){
+    this.resource('userpanel', {path:'/params.user_id'});
+  });
   this.resource('maps', {path: '/Maps'});
-  this.resource('map', {path: '/Map/:towns_id'});
-  this.resource('info', {path: '/MapInfo/:towns_id'});
+  this.resource('map', {path: 'Maps/Map/:towns_id'});
+  this.resource('info', {path: 'Maps/Map/MapInfo/:towns_id'});
   this.resource('about', {path:'/About'});
   this.resource('future', {path:'/Future'});
   this.resource('createUser', {path:'/Welcome'});
@@ -116,6 +117,7 @@ GISMO.UserpanelController = Ember.ArrayController.extend({
   isAuth: false,
   isExpanded: false,
   model: [],
+  allTown: false,
   
   actions: {
     LogOut: function () {
@@ -148,6 +150,11 @@ GISMO.UserpanelController = Ember.ArrayController.extend({
                 this.set('isAuth', true);
                 $('#myModal').modal('hide');
                 this.set('model', (this.store.findById('myusers', user.id)));
+                var myref = new Firebase('https://fiery-fire-2822.firebaseio.com/myusers/' + user.id + '/availabletowns/0');
+                if(myref = 'All Towns')
+                {
+                  this.set('allTown', true);
+                }
             } 
             else 
             {

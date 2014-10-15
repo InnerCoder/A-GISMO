@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GISMO</title>
+  <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+            {{outlet}} 
+            <div style="height:8em;"></div>  
+            <div style="bottom:0px; height:8em; position:fixed; width:100%;">{{nav-bar}}</div>      
+  </script>  
+
+<script type="text/x-handlebars" id="home">
+    {{#if isAuth}}
+      <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+              <div class="btn btn-warning btn-block" {{action 'LogOut'}}>LOG OUT</div>
+              </div> 
+            </div>
+      </div>
+    {{else}}
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-sm">SIGN IN</div>
+          </div>
+        </div>
+      </div>
+    {{/if}}  
+     <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div id="myModal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <div type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</div>
+                            <h4 class="modal-title">Log In</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="container">
+                            <form {{action marchFourth on='submit'}} class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                      <label class="control-label" for="inputUsername">Email:</label>
+                                        {{input class="form-control" id="username" type="email" placeholder="Herbie.Handcock@gmail.com"}}
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label" for="inputPassword"> Password:</label>
+                                        {{input class="form-control" id="password" type="password" placeholder="Ultra Secret"}}
+                                    </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-block">Sing In</button>
+                            </form>
+                          </div><!-- container -->
+                        </div>
+                        <div class="modal-footer">
+                            <!--<div type="button" class="btn btn-warning btn-block" data-dismiss="modal">Close</div>-->
+                        </div>
+                      </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+              </div> 
+            </div>
+
+             <hr>
+              <div class="jumbotron" style="background-color:rgba(255,255,255, .75);">
+                  <h2 class="text-center">Welcome to Avitar Geographic Information System Mapping Online</h2>
+                  <p></p>
+              </div>
+
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <div class="bs-callout bs-callout-info">
+              <h3>This is a new site and product, please give us your feedback</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+</script>
+
+
+<script type="text/x-handlebars" id="maps">
+  <div class="container">
+      <div class="row">
+          {{#each}}
+            {{#if public}}
+                <div class="col-sm-3" style="margin-top:10px;">
+                  {{#link-to 'map' this}}
+                    <div class="col-sm-12 btn btn-success btn-block" style="color:white;">
+                      <div class="row">
+                          <div style="white-space:normal;">
+                            <h1>{{name}}</h1>
+                            <h3>{{state}}</h3>
+                          </div>
+                      </div>
+                      <div class="row">
+                          {{#if assessing.data}}
+                            <div class="col-sm-8">Assessing Info</div>
+                             <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-ok"></span></div>
+                          {{else}}
+                            <div class="col-sm-8">Assessing Info</div>
+                            <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-remove"></span></div>
+                          {{/if}}
+                      </div>
+                    </div>
+                  {{/link-to}}
+                  {{#link-to 'info' this}}
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="col-sm-12 btn btn-sm btn-success btn-block">
+                          <span class="badge pull-right">{{maps.updated}}</span>Detailed Map Info
+                        </div>
+                      </div>
+                    </div>
+                  {{/link-to}}
+                </div>
+            {{else}}
+
+              {{#if controller.isLoggedIn}}
+                
+                <div class="col-sm-3" style="margin-top:10px;">
+                  {{#link-to 'map' this}}
+                    <div class="col-sm-12 btn btn-success btn-block" style="color:white;">
+                      <div class="row">
+                          <div style="white-space:normal;">
+                            <h1>{{name}}</h1>
+                            <h3>{{state}}</h3>
+                          </div>
+                      </div>
+                      <div class="row">
+                          {{#if assessing.data}}
+                            <div class="col-sm-8">Assessing Info</div>
+                             <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-ok"></span></div>
+                          {{else}}
+                            <div class="col-sm-8">Assessing Info</div>
+                            <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-remove"></span></div>
+                          {{/if}}
+                      </div>
+                    </div>
+                  {{/link-to}}
+                  {{#link-to 'info' this}}
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="col-sm-12 btn btn-sm btn-success btn-block">
+                          <span class="badge pull-right">{{maps.updated}}</span>Detailed Map Info
+                        </div>
+                      </div>
+                    </div>
+                  {{/link-to}}
+                </div>
+              {{else}}
+                  <div class="col-sm-3" style="margin-top:10px;">
+                    <div class="col-sm-12 btn btn-success btn-block disabled">
+                      <div class="row">
+                              <div style="white-space:normal;">
+                                <h1>{{name}}</h1>
+                                <h3>{{state}}</h3>
+                              </div>
+                      </div>
+                      <div class="row">
+                          {{#if assessing.data}}
+                            <div class="col-sm-8">Assessing Info</div>
+                             <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-ok"></span></div>
+                          {{else}}
+                            <div class="col-sm-8">Assessing Info</div>
+                            <div class="col-sm-1 col-sm-offset-1"><span class="glyphicon glyphicon-remove"></span></div>
+                          {{/if}}
+                      </div>
+                    </div>
+                    {{#link-to 'createUser'}}
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="col-sm-12 btn btn-sm btn-warning btn-block">
+                              <span class="badge pull-right">register!</span>Not Publically Available 
+                            </div>
+                          </div>
+                        </div>
+                    {{/link-to}}
+                  </div>
+              {{/if}}
+            {{/if}} 
+          {{/each}}
+      </div>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="map">
+  <div class="container">
+    <div class="col-md-12">
+      <h1 class="text-center" style="background-color:#5cb85c; margin:10px; padding:15px;">{{name}}, {{state}}</h1>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="info">
+  <div class="container">
+    <div class="row">
+      <div class="jumbotron">
+        <h1>{{name}}, {{state}}</h1>
+        <h2>Assessing Information</h2>
+        <h4>{{assessing.updated}}</h4>
+      </div>
+      
+    </div>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="createUser">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron" style="background-color:rgba(255,255,255, .90);">
+          <form name="newUserForm" {{action controller.aConvert on='submit'}} class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="control-label" for="inputFirstname"> First Name:</label>
+              {{input value=firstname class="form-control" id="firstname" type="text" placeholder="John"}}
+              <label class="control-label" for="inputLastname"> Last Name:</label>
+              {{input value=lastname class="form-control" id="lastname" type="text" placeholder="Smith"}}
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputNewusername">Email:</label>
+                {{input value=newusername class="form-control" id="newusername" type="email" placeholder="Herbie.Handcock@gmail.com"}}
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputPassword"> Password:</label>
+                {{input value=password class="form-control" id="password" type="password" placeholder="Ultra Secret"}}
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputUserType"> Use Type:</label>
+                <select id="usetype" class="form-control">
+                  <option>Assessor</option>
+                  <option>Building Inspector</option>
+                  <option>Personal</option>
+                  <option>Realtor</option>
+                  <option>Town Council</option>
+                  <option>Town Management</option>
+                  <option>Town Selectmen</option>
+                </select>
+            </div>
+            <hr>
+            <div class="form-group">
+              <label class="control-label" for="inputUserType"> Account Access:</label><br>
+              <label class="radio-inline">
+                {{view Ember.RadioButton name="selectionTest" selectionBinding="selectOne" id="selectOne1" value="selectOne"}} <h4>Single-Town</h4>
+              </label>
+               <label class="radio-inline">
+                {{view Ember.RadioButton name="selectionTest" selectionBinding="selectMany" id="selectMany2" value="selectMany"}} <h4>Custom-Selection</h4>
+              </label>
+              <label class="radio-inline">
+                {{view Ember.RadioButton name="selectionTest" selectionBinding="isSelected" value="selectAll"}} <h4>All-Towns</h4>
+              </label>
+            </div>
+            {{#if selectOne}}
+              <div class="form-group">
+                <label class="control-label" for="inputUserType"> Choose One:</label>
+                <select name="selectOne" id="selectOne" class="form-control">
+                  {{#each}}
+                    <option>{{name}}, {{state}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            {{else}}
+            {{/if}}
+            {{#if selectMany}}
+              <div class="form-group">
+                <label class="control-label" for="inputUserType"> Ctr Click :</label>
+                <select name="selectMany" multiple id="selectMany" class="form-control">
+                  {{#each}}
+                    <option>{{name}}, {{state}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            {{else}}
+            {{/if}}
+
+              
+            <div {{action aConvert}} type="submit" class="btn btn-success btn-block">Register</div>
+          </form>
+      
+        </div><!--jumbotron-->
+      </div>
+      
+    </div>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="about">
+  <div class="container">
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="successconvert">
+  <div class="container">
+    
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="future">
+  <div class="container">
+  </div>
+</script>
+<script type="text/x-handlebars" id="components/nav-bar">
+  <div class="container">
+      <div class="row">
+        {{#link-to 'home'}}
+          <div class="col-md-3 col-xs-3 btn btn-danger">
+            <span class="glyphicon glyphicon4x glyphicon-home"></span>
+             <h6>HOME</h6> 
+          </div>
+        {{/link-to}}
+        {{#link-to 'maps'}}
+          <div class="col-md-3 col-xs-3 btn btn-danger">
+            <span class="glyphicon glyphicon4x glyphicon-globe"></span>
+             <h6>MAPS</h6> 
+          </div>
+        {{/link-to}}
+        {{#link-to 'about'}}
+          <div class="col-md-3 col-xs-3 btn btn-danger">
+            <span class="glyphicon glyphicon4x glyphicon-info-sign"></span>
+             <h6>ABOUT</h6> 
+          </div>
+        {{/link-to}}
+        {{#link-to 'future'}}
+          <div class="col-md-3 col-xs-3 btn btn-danger">
+            <span class="glyphicon glyphicon4x glyphicon-flag"></span>
+             <h6>FUTURE</h6> 
+          </div>
+        {{/link-to}}
+      </div>
+  </div>
+</script>
+
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.2.1.js"></script>
+  <!-- <script src="http://builds.emberjs.com/canary/ember.js"></script> -->
+  <script src="js/libs/ember-1.5.0.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/firebase.js"></script>
+  <!-- <script src="js/libs/EmberFire.js"></script> -->
+  <script src="https://cdn.firebase.com/libs/emberfire/1.1.3/emberfire.min.js"></script>
+  <script src="js/libs/bootstrap.min.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script> 
+  <script src="js/GISMOone.js"></script>
+  <script type='text/javascript'
+        src='https://cdn.firebase.com/js/simple-login/1.3.2/firebase-simple-login.js'>
+  </script>
+</body>
+</html>
