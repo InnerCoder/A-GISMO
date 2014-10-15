@@ -250,10 +250,78 @@
 
   <script type="text/x-handlebars" data-template-name="map">
     <div class="container">
-      <div class="col-md-12">
-        <h1 class="text-center mybutton grn" >{{name}}, {{state}}</h1>
+      <div id="info" class="info">
       </div>
-    </div>
+      <div id="pos" class="pos block" onclick="scaleUnits()">
+      </div>
+      
+      <div class="buttonZoom zExtent"></div>
+
+      <div class="button" onclick="selectedFeature(id)" id="000U190000050001-1">000U190000050001-1</div>
+      <div class="button" onclick="selectedFeature(id)" id="000U12000011000000">000U12000011000000</div>
+      <div class="button" onclick="selectedFeature(id)" id="000R03000018000006">000R03000018000006</div>
+      <br>
+          <div class="Legend">
+              <legend>Legend</legend>
+              </hr>
+                <div class="row">
+                  <label for="parcelLegend">
+                    <div class="col-xs-4">
+                      <h4>Parcels</h4>
+                    </div>
+                    <div class="col-xs-4">
+                      <input class="ios-switch green tinyswitch" id="parcelLegend" type="checkbox" checked/>
+                        <div><div></div></div>
+                    </div>
+                  </label>
+                </div>
+                <div class="row">
+                  <label for="zoneLegend">
+                    <div class="col-xs-4">
+                      <h4>Zoning</h4>
+                    </div>
+                    <div class="col-xs-4">
+                      <input class="ios-switch green tinyswitch" id="zoneLegend" type="checkbox" checked/>
+                       <div><div></div></div>
+                    </div>
+                  </label>
+                  <div class="row">
+                      <div class="col-xs-6 col-xs-offset-4" style="display:block; background-color:rgba(215, 127, 44, 0.6); border-color:rgba(215, 127, 44, 1); border-style:dashed; text-align:center;">
+                          Residential Commercial
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-6 col-xs-offset-4" style="display:block; background-color:rgba(215, 54, 44, 0.6); border-color:rgba(215, 54, 44, 1); border-style:dashed; text-align:center;">
+                          Residential Light Commercial
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <label for="femaLegend">
+                    <div class="col-xs-4">
+                      <h4>Flood Plain</h4>
+                    </div>
+                    <div class="col-xs-4">
+                      <input class="ios-switch green tinyswitch" id="femaLegend" type="checkbox"/>
+                       <div><div></div></div>
+                    </div>
+                  </label>
+                  <div class="row">
+                      <div class="col-xs-6 col-xs-offset-4" style="display:block; background-color:rgba(38, 174, 199, 0.6); border-color:rgba(38, 174, 199, 1); border-style:dashed; text-align:center;">
+                          100 Year
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-6 col-xs-offset-4" style="display:block; background-color:rgba(0, 86, 199, 0.6); border-color:rgba(0, 86, 199, 1); border-style:dashed; text-align:center;">
+                          500 Year
+                      </div>
+                  </div>
+                </div>
+      
+          </div>
+    </div> <!--Container-->
+    <div id="map" class="map"></div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="info">
@@ -425,5 +493,6 @@
   <script type='text/javascript'
         src='https://cdn.firebase.com/js/simple-login/1.3.2/firebase-simple-login.js'>
   </script>
+  <script type='text/javascript' src="js/libs/myMaps.js"></script>
 </body>
 </html>
