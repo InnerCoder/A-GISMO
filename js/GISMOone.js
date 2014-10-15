@@ -181,6 +181,11 @@ GISMO.CreateUserController = Ember.ArrayController.extend({
 
 });
 
+GISMO.MapController = Ember.ObjectController.extend({
+  
+
+});
+
 ////////////
 ///ROUTES
 ////////////
